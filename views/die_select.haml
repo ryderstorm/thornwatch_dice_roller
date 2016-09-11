@@ -1,15 +1,38 @@
 %html
+  :javascript
+    function launchFullscreen(element) {
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+    function exitFullscreen() {
+      if(document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if(document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if(document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
   %audio{id:'dice_sound', src:random_dice_sound}
   %head
     %title Thornwatch Dice Roller
     %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
     %link(rel="stylesheet" href="css/styles.css")
+    / from https://github.com/daneden/animate.css:
+    %link(rel="stylesheet" href="css/animate.min.css")
   %body
     %form{action:'/roll_results', method:'post'}
       %table.select_table.white_boxed
         %tr
           %td{style:'width:33%', margin:'auto'}
-            %img{src:'/images/logo.png'}
+            %img.logo{src:'/images/logo.png', onclick:"launchFullscreen(document.documentElement);"}
           %td.white_boxed.valign{style:'width:66%', margin:'auto'}
             %table.select_table
               %tr
