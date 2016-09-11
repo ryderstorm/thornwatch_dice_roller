@@ -93,12 +93,17 @@ end
 
 get '/roll_results_test' do
 
-  @roll_results = {
-    ebb_count: 1,
-    miss_count: 2,
-    hit_count: 3,
-    doublt_hit_count: 1
-  }
+  @roll_results = [
+    :ebb,
+    :miss,
+    :miss,
+    :hit,
+    :hit,
+    :double_hit,
+    'empty',
+    'empty',
+    'empty'
+  ].shuffle
 
   haml :roll_results
 end
