@@ -1,0 +1,50 @@
+%html
+  %audio{id:'dice_sound', src:random_dice_sound}
+  %head
+    %title Thornwatch Dice Roller
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
+    %link(rel="stylesheet" href="css/styles.css")
+  %body
+    %form{action:'/roll_results', method:'post'}
+      / %h1 Select dice to roll:
+      %table
+        %tr
+          %td
+            %img.logo{src:'/images/logo.png'}
+          %td.boxed.valign
+            %ul
+              %li
+                %input{type:'checkbox', name:'regular1', id:'regular1'}
+                %label{for:'regular1'} Regular die #1
+              %li
+                %input{type:'checkbox', name:'regular2', id:'regular2'}
+                %label{for:'regular2'} Regular die #2
+              %li
+                %input{type:'checkbox', name:'regular3', id:'regular3'}
+                %label{for:'regular3'} Regular die #3
+              %li
+                %input{type:'checkbox', name:'regular4', id:'regular4'}
+                %label{for:'regular4'} Regular die #4
+              %li
+                %input{type:'checkbox', name:'regular5', id:'regular5'}
+                %label{for:'regular5'} Regular die #5
+          %td.valign
+            %table.valign
+              %tr.valign
+                %td.boxed
+                  %ul
+                    %li
+                      %input{type:'checkbox', name:'hero1', id:'hero1'}
+                      %label{for:'hero1'} Hero die #1
+                    %li
+                      %input{type:'checkbox', name:'hero2', id:'hero2'}
+                      %label{for:'hero2'} Hero die #2
+              %tr
+                %td
+                  %br
+                  %br
+                  %br
+                  %br
+              %tr
+                %td.boxed.hcentered
+                  %input.hcentered.roll_button{type:'submit', value:'Roll!', onsubmit:"document.getElementById('dice_sound').play()"}
