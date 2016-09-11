@@ -34,7 +34,7 @@ input[type=checkbox] {
     transform: scale(2);
     border-color: white;
     color: white;
-    margin: 15 15 15 15;
+    margin: 25 15 25 15;
 }
 
 .select_table{
@@ -100,16 +100,15 @@ input[type=submit]{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width:75px;
     height:75px;
 }
 
 .roll_button {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 150px;
+    margin: 15px 15px 15px 15px;
+    height: 75px;
     width: 95%;
     font-size: 300%;
 }
