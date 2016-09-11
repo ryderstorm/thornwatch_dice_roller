@@ -74,29 +74,20 @@ post '/roll_results' do
     params["regular1"],
     params["regular2"],
     params["regular3"],
-    params["regular4"],
-    params["regular5"]
-  ]
+    params["regular4"]
+  ].select { |r| r == 'on'}.count
 
   hero_rolls = [
     params["hero1"],
     params["hero2"]
-  ]
+  ].select { |r| r == 'on'}.count
 
-  r = regular_rolls.select { |r| r == 'on'}.collect { |r| regular_die_roll }
-
-  h = hero_rolls.select { |r| r == 'on'}.collect { |r| hero_die_roll }
-
-  # all_rolls = regular_rolls + hero_rolls
-  all_rolls = r + h
-
-  @roll_results = {
-    ebb_count: all_rolls.select { |r| r == :ebb }.count,
-    miss_count: all_rolls.select { |r| r == :miss }.count,
-    hit_count: all_rolls.select { |r| r == :hit }.count,
-    doublt_hit_count: all_rolls.select { |r| r == :double_hit }.count
-  }
-
+  @roll_results = []
+  regular_rolls.times { @roll_results << regular_die_roll }
+  hero_rolls.times { @roll_results << hero_die_roll }
+  (9 - @roll_results.count).times { @roll_results << 'empty' }
+  @roll_results.shuffle!
+  ap @roll_results
   haml :roll_results
 end
 

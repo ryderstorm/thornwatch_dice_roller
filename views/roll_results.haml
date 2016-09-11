@@ -6,49 +6,23 @@
     %link(rel="stylesheet" href="css/styles.css")
   %body
     %br
-    %br
-    %br
-    %table.hcentered
+    %table.roll_table
+      - rolls = @roll_results.each_slice(3).to_a
+      - ap rolls
+      - rolls.each do |row|
+        %tr.white_boxed
+          - row.each do |r|
+            - image = r.to_s == 'empty' ? 'empty.png' : "#{r.to_s}.svg"
+            %td.black_boxed
+              %img.result_image{src:"/images/#{image}"}
       %tr
-      - unless @roll_results[:ebb_count] == 0
-        %td.boxed
-          %table.ebb
-            %tr
-              %img.result_image{src:'/images/ebb.svg'}
-            %tr
-              %p.result
-                = "x #{@roll_results[:ebb_count]}"
-      - unless @roll_results[:miss_count] == 0
-        %td.boxed
-          %table.miss
-            %tr
-              %img.result_image{src:'/images/miss.svg'}
-            %tr
-              %p.result
-                = "x #{@roll_results[:miss_count]}"
-      - unless @roll_results[:hit_count] == 0
-        %td.boxed
-          %table.hit
-            %tr
-              %img.result_image{src:'/images/hit.svg'}
-            %tr
-              %p.result
-                = "x #{@roll_results[:hit_count]}"
-      - unless @roll_results[:doublt_hit_count] == 0
-        %td.boxed
-          %table.double_hit
-            %tr
-              %img.result_image{src:'/images/double_hit.svg'}
-            %tr
-              %p.result
-                = "x #{@roll_results[:doublt_hit_count]}"
-    / %hr
-    %br
-    %br
-    %br
-    .hcentered
-      %a.button{href:'/die_select'} Roll again!
-      / %hr
-      / %a.button{href:'/roll_results_test'} TEST ROLLS
-      / %hr
-      / %button{onclick:"document.getElementById('dice_sound').play()" } TEST SOUND
+        %table.roll_table
+          %tr
+            %td.black_boxed
+              %form{action:'die_select', method:'link'}
+                %input.hcentered.roll_button{type:'submit', value:'Roll again!'}
+          / %hr
+          / %a.button{href:'/roll_results_test'} TEST ROLLS
+          / %hr
+          / %button{onclick:"document.getElementById('dice_sound').play()" } TEST SOUND
+        }
