@@ -21,8 +21,6 @@
             %td.black_boxed
               %form{action:'die_select', method:'link'}
                 %input.hcentered.roll_button{type:'submit', value:'Roll again!'}
-          / %hr
-          / %a.button{href:'/roll_results_test'} TEST ROLLS
-          / %hr
-          / %button{onclick:"document.getElementById('dice_sound').play()" } TEST SOUND
-        }
+    - if @testing
+      %hr
+      %button{onclick:"document.getElementById('dice_sound').play()" } TEST SOUND

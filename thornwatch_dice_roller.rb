@@ -104,6 +104,7 @@ get '/roll_results_test' do
     'empty',
     'empty'
   ].shuffle
+  @testing = true
 
   haml :roll_results
 end
