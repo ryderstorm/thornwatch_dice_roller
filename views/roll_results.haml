@@ -1,9 +1,6 @@
 %html
   %audio{id:'dice_sound', src:random_dice_sound, autoplay:'autoplay'}
-  :javascript
-      function Refresh() {
-        window.parent.location = window.parent.location.href;
-      };
+  %script(src="js/app.js")
   %head
     - if @testing
       %button{style:'margin: 10 10 10 10', onclick:'Refresh()'} RELOAD PAGE
@@ -14,7 +11,7 @@
     %link(rel="stylesheet" href="css/animate.min.css")
   %body
     %br
-    %table.roll_table
+    %table.roll_table.visible
       - rolls = @roll_results.each_slice(3).to_a
       - ap rolls
       - rolls.each do |row|
@@ -30,5 +27,9 @@
               %form{action:'die_select', method:'link'}
                 %input.hcentered.roll_button{type:'submit', value:'Roll again!'}
     - if @testing
+      %hr
+      %button{id: 'hide'} HIDE
+      %hr
+      %button{id: 'show'} SHOW
       %hr
       %button{onclick:"document.getElementById('dice_sound').play()" } TEST SOUND
