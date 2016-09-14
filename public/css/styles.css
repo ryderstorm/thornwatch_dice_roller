@@ -4,7 +4,11 @@ body{
     color:white;
     width:100%;
     height:100%;
+    /*font-family: 'Yatra One', cursive;*/
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
 }
+
 /*.white_boxed{
     border-style: dashed;
     border-width: medium;
@@ -101,7 +105,6 @@ body{
     -webkit-border-radius: 22;
     -moz-border-radius: 22;
     border-radius: 22px;
-    font-family: Georgia;
     color: #ffffff;
     background: #b13938;
     background-image: -webkit-linear-gradient(top, #b13938, #8c2e2e);
@@ -110,7 +113,6 @@ body{
     background-image: -o-linear-gradient(top, #b13938, #8c2e2e);
     background-image: linear-gradient(to bottom, #b13938, #8c2e2e);
     border: solid #807676 4px;
-    text-decoration: none;
 }
 
 .action_table{
@@ -147,12 +149,10 @@ body{
     -webkit-border-radius: 22;
     -moz-border-radius: 22;
     border-radius: 22px;
-    font-family: Georgia;
     color: #ffffff;
     font-size: 100%;
     background: #342b2b;
     border: solid #807676 4px;
-    text-decoration: none;
 }
 
 .die_button_clicked {
