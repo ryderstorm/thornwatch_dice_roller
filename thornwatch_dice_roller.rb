@@ -68,6 +68,24 @@ get '/die_select' do
   haml :die_select
 end
 
+get '/test' do
+
+  @roll_results = [
+    :ebb,
+    :miss,
+    :miss,
+    :hit,
+    :hit,
+    :double_hit,
+    'empty',
+    'empty',
+    'empty'
+  ].shuffle
+  @testing = true
+
+  haml :die_select
+end
+
 post '/roll_results' do
 
   regular_rolls = [
