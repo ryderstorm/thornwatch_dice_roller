@@ -43,7 +43,6 @@ function Refresh() {
 };
 
 function hide_results() {
-  console.log('hide_results');
   $('.results').removeClass('visible');
   $('.results').addClass('hidden');
   $('.return_button').removeClass('visible');
@@ -51,15 +50,54 @@ function hide_results() {
 };
 
 function show_results() {
-  console.log('show_results');
   $('.results').removeClass('hidden');
   $('.results').addClass('visible');
   $('.return_button').removeClass('hidden');
   $('.return_button').addClass('visible');
+  var slicedRolls = [];
+  slicedRolls.push(finalResults.slice(0,3));
+  slicedRolls.push(finalResults.slice(3,6));
+  slicedRolls.push(finalResults.slice(6,9));
+  console.log("slicedRolls: " + slicedRolls.toString().replace(new RegExp('empty', 'g'), ''));
+  var table = document.getElementById('results_table');
+  slicedRolls.forEach(function(rolls){
+    var row = table.insertRow(-1);
+    rolls.forEach(function(roll){
+      var cell = row.insertCell(-1);
+      cell.className = "yellow_boxed"
+      var image = document.createElement('img');
+      image.className = "die_image animated rollIn";
+      switch(roll){
+        case "empty":
+            image.src = "images/empty.png";
+            $(image).addClass('hidden');
+            break;
+        case "ebb":
+            image.src = "images/ebb.svg";
+            break;
+        case "miss":
+            image.src = "images/miss.svg"
+            break;
+        case "hit":
+            image.src = "images/hit.svg";
+            break;
+        case "double_hit":
+            image.src = "images/double_hit.svg";
+            break;
+      }
+      cell.appendChild(image);
+    })
+  })
+};
+
+function delete_results() {
+  var table = document.getElementById('results_table');
+  while (table.firstChild) {
+      table.removeChild(table.firstChild);
+  };
 };
 
 function show_chooser() {
-  console.log('show_chooser');
   $('.chooser').removeClass('hidden');
   $('.chooser').addClass('visible');
   $('.roll_button').removeClass('hidden');
@@ -67,7 +105,6 @@ function show_chooser() {
 };
 
 function hide_chooser() {
-  console.log('hide_chooser');
   $('.chooser').removeClass('visible');
   $('.chooser').addClass('hidden');
   $('.roll_button').removeClass('visible');
@@ -75,23 +112,37 @@ function hide_chooser() {
 };
 
 function show_chooser_wrapper() {
-  console.log('show_chooser_wrapper');
   $(".die_button").removeClass('die_button_clicked');
   rollResults = []
   finalResults = []
   hide_results();
+  delete_results();
   setTimeout(function(){
     show_chooser();
   }, 500);
 };
 
 function show_results_wrapper() {
-  console.log('show_results_wrapper');
-  // document.getElementById('dice_sound').play();
+  if (rollResults.length == 0) {
+    var tip = document.getElementById('tooltip');
+    $(tip).removeClass('bottom');
+    $(tip).addClass('top');
+    $(tip).removeClass('hidden');
+    $(tip).addClass('visible');
+    setTimeout(function(){
+      $(tip).addClass('hidden');
+      $(tip).removeClass('visible');
+    }, 2000);
+    setTimeout(function(){
+      $(tip).removeClass('top');
+      $(tip).addClass('bottom');
+    }, 2100);
+    return
+  }
   calculateResults();
-  playDiceSound();
   hide_chooser();
   setTimeout(function(){
+    playDiceSound();
     show_results();
   }, 500);
 };
@@ -112,8 +163,6 @@ function calculateResults() {
       finalResults.push("empty");
     }
   });
-  console.log("Final results: " + finalResults.toString());
-  console.log("Final results length: " + finalResults.length);
 }
 
 function UrlExists(url)
@@ -128,7 +177,6 @@ function getSoundFile() {
   var path = 'sounds/',
   files = ['dice1.mp3', 'dice2.mp3', 'dice3.mp3', 'dice4.mp3'],
   i = Math.floor(Math.random()*files.length);
-  console.log(path+files[i])
   return (path+files[i]);
 }
 

@@ -7,11 +7,11 @@
     %link(rel="stylesheet" href="css/styles.css")
     / from https://github.com/daneden/animate.css:
     %link(rel="stylesheet" href="css/animate.min.css")
-  %body.white_boxed
+  %body
     %img.logo.blue_boxed{src:'/images/logo.png'}
     .action_box.blue_boxed
       .chooser.visible
-        %table.action_table.yellow_boxed
+        %table.action_table
           %tr
             %td
               %button.die_button.regular_die{id:'regular1'} Regular die
@@ -28,14 +28,9 @@
             %td
               %button.die_button.hero_die{id:'hero2'} Hero die
       .results.hidden
-        %table.action_table.yellow_boxed
-          - rolls = @roll_results.each_slice(3).to_a
-          - ap rolls
-          - rolls.each do |row|
-            %tr
-              - row.each do |r|
-                - image = r.to_s == 'empty' ? 'empty.png' : "#{r.to_s}.svg"
-                %td
-                  %img.result_image.animated.rotateIn{src:"/images/#{image}"}
-      %button.big_button.visible.roll_button Roll!
+        %table.action_table#results_table
+    .button_box.blue_boxed
+      %button.big_button.visible.roll_button
+        Roll!
       %button.big_button.hidden.return_button Roll again!
+      %button.tooltip#tooltip.hidden.bottom You must select some dice before rolling!

@@ -5,35 +5,24 @@ body{
     width:100%;
     height:100%;
 }
-
-.white_boxed{
-    /*border-style: dashed;*/
-    /*border-width: medium;*/
-    /*border-color: white;*/
+/*.white_boxed{
+    border-style: dashed;
+    border-width: medium;
+    border-color: white;
 }
 
 .yellow_boxed{
-    /*border-style: dashed;*/
-    /*border-width: medium;*/
-    /*border-color: yellow;*/
+    border-style: dashed;
+    border-width: medium;
+    border-color: yellow;
 }
 
 .blue_boxed{
-    /*border-style: dashed;*/
-    /*border-width: medium;*/
-    /*border-color: blue;*/
+    border-style: dashed;
+    border-width: medium;
+    border-color: blue;
 }
-
-.result_image{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width:75px;
-    height:75px;
-}
-
+*/
 .visible {
     visibility:visible;
     opacity:1;
@@ -56,12 +45,27 @@ body{
 }
 
 .action_box{
-    margin: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
     position: relative;
     left: 40%;
     top:0;
     width: 50%;
-    height: 90%;
+    height: 60%;
+}
+
+.button_box{
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    left: 40%;
+    top:1%;
+    width: 50%;
+    height: 15%;
 }
 
 .chooser {
@@ -87,10 +91,10 @@ body{
 .big_button {
     margin: auto;
     position: absolute;
-    top:70%;
-    height: 25%;
+    /*left:90%;*/
+    height: 100%;
     width: 100%;
-    font-size: 300%;
+    font-size: 275%;
     z-index: 3;
     -webkit-border-radius: 22;
     -moz-border-radius: 22;
@@ -108,12 +112,26 @@ body{
 }
 
 .action_table{
+    display: table;
     position: relative;
-    top:5%;
+    top:0;
     margin: auto;
-    width:95%;
-    height: 75%
+    width:100%;
+    height: 100%;
     text-align: center;
+}
+
+.action_table tr{
+    height: 33%
+}
+
+.action_table td{
+    width: 33%
+}
+
+.die_image{
+    width:50%;
+    max-height:auto;
 }
 
 .die_button {
@@ -145,4 +163,26 @@ body{
     background-image: -o-linear-gradient(top, #b13938, #8c2e2e);
     background-image: linear-gradient(to bottom, #b13938, #8c2e2e);
     text-decoration: none;
+}
+
+.top{
+    z-index: 10;
+}
+
+.bottom{
+    z-index: -10;
+}
+
+.tooltip {
+    position: relative;
+    width:100%;
+    height: 100%;
+    margin: auto;
+    display: inline-block;
+    border-radius: 22px;
+    border: solid #807676 4px;
+    background-color: #342b2b;
+    color: #fff;
+    text-align: center;
+    font-size: 100%;
 }
