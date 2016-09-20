@@ -1,3 +1,4 @@
+/*I recorded this as I was building out other examples to show you. I noticed that you body was not covering all of the contents. http://cl.nicoll.co/hWaK */
 body{
     background-color: #262626;
     font-family:sans-serif;
@@ -186,4 +187,50 @@ body{
     color: #fff;
     text-align: center;
     font-size: 100%;
+}
+
+/**/
+/**/
+/*flexy styles*//*flexy styles*//*flexy styles*//*flexy styles*/
+/**/
+/**/
+
+/*It is a general convention to use dash-case css classes/ids not underscore_class_names*/
+.logo-box {
+  width: 50%;
+}
+.button-wrapper {
+  width: 50%;
+  float: right;
+}
+
+.button-box {
+  width: 50%;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* It is convention to name class after _what an item is_ vs. _what an item looks like_.
+ In this case taht means doing something like .roll-button or .roll-btn vs .big_button
+*/
+.roll-button {
+  margin: auto;
+  -webkit-border-radius: 22;
+  -moz-border-radius: 22;
+  border-radius: 22px;
+  color: #ffffff;
+  background: #b13938;
+  background-image: -webkit-linear-gradient(top, #b13938, #8c2e2e);
+  background-image: -moz-linear-gradient(top, #b13938, #8c2e2e);
+  background-image: -ms-linear-gradient(top, #b13938, #8c2e2e);
+  background-image: -o-linear-gradient(top, #b13938, #8c2e2e);
+  background-image: linear-gradient(to bottom, #b13938, #8c2e2e);
+  border: solid #807676 4px;
 }

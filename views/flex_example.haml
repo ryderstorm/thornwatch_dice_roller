@@ -1,0 +1,51 @@
+%html
+  %script(src="http://code.jquery.com/jquery-1.11.3.min.js")
+  %script(src="js/app.js")
+  %head
+    %title Thornwatch Dice Roller
+    %link{ rel:"icon", type:"image/png", href:"/images/favicon-32x32.png", sizes:"32x32"}
+    %link{ rel:"icon", type:"image/png", href:"/images/favicon-16x16.png", sizes:"16x16"}
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")
+    :css
+      @import 'https://fonts.googleapis.com/css?family=Yatra+One';
+      @import 'https://fonts.googleapis.com/css?family=Cinzel';
+    %link(rel="stylesheet" href="css/styles.css")
+    / from https://github.com/daneden/animate.css:
+    %link(rel="stylesheet" href="css/animate.min.css")
+  %body
+    .just-for-my-example-wrapper
+      .logo-box
+        %img.logo.blue_boxed{src:'/images/logo.svg'}
+      .action_box.blue_boxed
+        .chooser.visible
+          .buttons-wrapper
+            .button-row
+              %button.die_button.regular_die{id:'regular1'} Regular die
+              %button.die_button.regular_die{id:'regular2'} Regular die
+            .button-row
+              %button.die_button.regular_die{id:'regular3'} Regular die
+              %button.die_button.regular_die{id:'regular4'} Regular die
+            .button-row
+              %button.die_button.hero_die{id:'hero1'} Hero die
+              %button.die_button.hero_die{id:'hero2'} Hero die
+        .results.hidden
+          %table.action_table#results_table
+      .button_box.blue_boxed
+        %button.big_button.visible.roll_button
+          Roll!
+        %button.big_button.hidden.return_button Roll again!
+        %button.tooltip#tooltip.hidden.bottom You must select some dice before rolling!
+
+      -# I see you are using tables below to do layout
+      -# Using any html element for the way it looks vs what it was semantically built for
+      -# is something looked down upong by FE snobs
+      -# you can totally do it, it is not hurting _anything_ at all
+      -# However, if you wanna jump on the best practices bad wagon,
+      -# I would suggest replace all tables with a simple wrapping div and give that div and its children flex styles
+      -# I did a small example here with these two buttons.
+      -# This article has all you need to know about flex
+      -#  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+      -# If you do end up replace the tables on your site and run into
+      -# issues with getting your css clean and how you want it, just push it up and I will jump on and help out.
+      -# Like I said though, the way you have this works though,
+      -# so if it is not super important to you, then don't sweat it.
